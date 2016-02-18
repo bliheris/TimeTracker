@@ -3,9 +3,7 @@ package pl.mb.shared.timeRecord;
 import pl.mb.shared.project.Project;
 import pl.mb.shared.project.ProjectId;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TimeRecordRepository {
 
@@ -22,5 +20,9 @@ public class TimeRecordRepository {
 
     public TimeRecord load(ProjectId id){
         return repo.get(id);
+    }
+
+    public List<TimeRecord> getAllRecords(){
+        return new ArrayList<TimeRecord>(repo.values());
     }
 }

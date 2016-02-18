@@ -7,8 +7,8 @@ import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.constants.FormType;
 import org.gwtbootstrap3.extras.datepicker.client.ui.DatePicker;
 
-import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class CustomForm extends Form {
 
@@ -17,6 +17,8 @@ public class CustomForm extends Form {
     private SuggestBox project;
     private TextBox description;
     private Button logButton;
+
+    private MultiWordSuggestOracle oracle;
 
     public CustomForm() {
         setType(FormType.INLINE);
@@ -31,8 +33,7 @@ public class CustomForm extends Form {
         time.setPlaceholder("TIME");
         time.setWidth("100px");
 
-        MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();
-        oracle.addAll(Arrays.asList("Solin", "Test1", "Nowe", "Test2"));
+        oracle = new MultiWordSuggestOracle();
         project = new SuggestBox(oracle);
         project.setPlaceholder("PROJECT");
 
@@ -81,5 +82,10 @@ public class CustomForm extends Form {
         time.clear();
         project.setText("");
         description.clear();
+    }
+
+    public void setProjectAutoSuggest(List<String> projects) {
+        oracle.clear();
+        oracle.addAll(projects);
     }
 }

@@ -1,8 +1,5 @@
 package pl.mb.client.main;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import org.gwtbootstrap3.client.ui.Column;
@@ -44,18 +41,9 @@ public class MainPresenter implements Presenter {
     }
 
     private void bind() {
-        display.logs().addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent clickEvent) {
-                History.newItem(Tokens.LOGS);
-            }
-        });
-        display.reports().addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent clickEvent) {
-                History.newItem(Tokens.REPORTS);
-            }
-        });
+        display.logs().setHistoryToken(Tokens.LOGS);
+        display.projects().setHistoryToken(Tokens.PROJECTS);
+        display.reports().setHistoryToken(Tokens.REPORTS);
     }
 
     public void activateMenuItem(String token){

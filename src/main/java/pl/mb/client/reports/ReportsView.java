@@ -1,6 +1,6 @@
 package pl.mb.client.reports;
 
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.googlecode.gwt.charts.client.*;
 import com.googlecode.gwt.charts.client.corechart.PieChart;
 import com.googlecode.gwt.charts.client.corechart.PieChartOptions;
@@ -25,6 +25,11 @@ public class ReportsView extends Row implements ReportsPresenter.Display {
                 draw();
             }
         });
+    }
+
+    @Override
+    public void showIn(HasWidgets container) {
+        container.add(this);
     }
 
     private void draw() {
@@ -64,10 +69,5 @@ public class ReportsView extends Row implements ReportsPresenter.Display {
                 chart.setSelection(Selection.create(1, null));
             }
         });
-    }
-
-    @Override
-    public Widget asWidget() {
-        return this;
     }
 }

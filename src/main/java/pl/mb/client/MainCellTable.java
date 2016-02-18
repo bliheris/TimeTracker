@@ -18,7 +18,6 @@ import java.util.List;
 
 public class MainCellTable extends CellTable {
 
-    public static Long ID = 1L;
     private ListDataProvider<TimeRecord> dataProvider;
     //private Pagination pagination;
     //private SimplePager dataGridPager;
@@ -116,6 +115,10 @@ public class MainCellTable extends CellTable {
 
     public void addRecord(TimeRecord timeRecord){
         dataProvider.getList().add(0, timeRecord);
+    }
+
+    public void clearData(){
+        dataProvider.getList().removeAll(dataProvider.getList());
     }
 
     /*public Pagination getPager(){

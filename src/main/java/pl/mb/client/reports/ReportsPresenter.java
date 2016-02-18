@@ -1,13 +1,12 @@
 package pl.mb.client.reports;
 
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import pl.mb.client.mvp.Presenter;
 
 public class ReportsPresenter implements Presenter {
 
     interface Display {
-        Widget asWidget();
+        void showIn(HasWidgets container);
     }
 
     private Display display;
@@ -18,9 +17,6 @@ public class ReportsPresenter implements Presenter {
 
     @Override
     public void go(HasWidgets container) {
-        //bind();
-        container.clear();
-        container.add(display.asWidget());
-        //fetchContactDetails();
+        display.showIn(container);
     }
 }
